@@ -1,0 +1,102 @@
+
+CREATE SCHEMA resortpro;
+SET search_path TO resortpro;
+
+CREATE TABLE city
+(zip numeric PRIMARY KEY, 
+name varchar(30) NOT NULL,
+state CHAR(2) NOT NULL);
+
+CREATE TABLE hotel
+(hotelid DECIMAL(4,0) PRIMARY KEY CONSTRAINT hotelid_cons CHECK (hotelid > 0),
+hotelname varchar(50) NOT NULL,
+zip int,
+address varchar(40) NOT NULL,
+rating varchar(10),
+FOREIGN KEY (zip) REFERENCES city(zip) ON DELETE RESTRICT);
+CREATE TABLE waiter
+( waiterid DECIMAL(3,0) PRIMARY KEY,
+waitername varchar(20),
+hotelid DECIMAL(4,0),
+FOREIGN KEY (hotelid) REFERENCES hotel(hotelid) ON DELETE CASCADE);
+
+CREATE TABLE customer
+(cid Decimal(4,0) PRIMARY KEY CONSTRAINT cid_cons CHECK (cid > 0),
+title CHAR(7) CONSTRAINT title_cons CHECK (title IN ('Mr','Mrs','Company','ms')),
+fname VARCHAR(20),
+minit CHAR(1),
+lname VARCHAR(20),
+address varchar(30),
+email varchar(320),
+contactNo DECIMAL(15,0),
+waiterid DECIMAL(3,0),
+FOREIGN KEY (waiterid) REFERENCES waiter(waiterid) ON DELETE CASCADE);
+
+
+CREATE TABLE offers
+( offerid DECIMAL(2,0),
+offername varchar(20),
+cid DECIMAL(4,0) CONSTRAINT cid_cons CHECK (cid > 0),
+hotelid DECIMAL(4,0)  CONSTRAINT hotelid_cons CHECK (hotelid > 0),
+discount int,
+startdate DATE,
+enddate DATE,
+FOREIGN KEY (hotelid) REFERENCES hotel(hotelid) ON DELETE CASCADE,
+FOREIGN KEY (cid) REFERENCES customer(cid) ON DELETE CASCADE,
+PRIMARY KEY(hotelid,cid,offerid));
+
+CREATE TABLE room
+(
+hotelid DECIMAL(4,0) CONSTRAINT hotelid_cons CHECK (hotelid > 0),
+rno decimal(3,0) PRIMARY KEY CONSTRAINT rno_cons CHECK (rno > 0),
+category varchar(6) CONSTRAINT category_cons CHECK (category IN ('single','double','suite')),
+floor SMALLINT,
+price numeric CONSTRAINT price_cons CHECK (price BETWEEN 0.00 AND 5000.00),
+FOREIGN KEY (hotelid) REFERENCES hotel(hotelid) ON DELETE CASCADE
+
+);
+
+CREATE TABLE reservation(
+rno decimal(3,0) CONSTRAINT rno_cons CHECK (rno > 0),
+cid DECIMAL(4,0) CONSTRAINT cid_cons CHECK (cid > 0),
+hotelid DECIMAL(4,0) CONSTRAINT hotelid_cons CHECK (hotelid > 0),
+checkin DATE NOT NULL,
+checkout DATE NOT NULL, CONSTRAINT staying CHECK (checkout > checkin),
+FOREIGN KEY (cid) REFERENCES customer(cid) ON DELETE CASCADE,
+FOREIGN KEY (rno) REFERENCES room(rno) ON DELETE CASCADE,
+FOREIGN KEY (hotelid) REFERENCES hotel(hotelid) ON DELETE CASCADE,
+PRIMARY KEY(hotelid,rno,cid)
+);
+CREATE TABLE relatives(
+cid DECIMAL(4,0),
+relative_name VARCHAR(20),
+sex char(1),
+relationship VARCHAR(20),
+FOREIGN KEY (cid) REFERENCES customer(cid)
+ON DELETE CASCADE ON UPDATE CASCADE,
+PRIMARY KEY (cid,relative_name)
+);
+
+CREATE TABLE item
+(  itemid decimal(2,0) PRIMARY KEY,
+itemname varchar(20),
+price numeric CONSTRAINT price_cons CHECK (price BETWEEN 0.00 AND 500.00));
+
+CREATE TABLE orders
+( 
+cid DECIMAL(4,0),
+itemid DECIMAL(3,0),
+quantity INT,
+date DATE,
+FOREIGN KEY(cid) REFERENCES customer(cid) ON DELETE RESTRICT,
+FOREIGN KEY(itemid) REFERENCES item(itemid) ON DELETE RESTRICT,
+PRIMARY KEY (cid,itemid));
+
+
+
+CREATE TABLE bill
+( billid DECIMAL(3,0) PRIMARY KEY,
+date DATE,
+cid DECIMAL(4,0),
+paymentmode varchar(10),
+FOREIGN KEY(cid) REFERENCES customer(cid) ON DELETE RESTRICT);

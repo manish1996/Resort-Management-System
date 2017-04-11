@@ -1,0 +1,126 @@
+
+SET search_path TO project;
+ insert into item Values('01','pizza','320');
+ insert into item Values('02','sandwich','100');
+ insert into item Values('03','nuddles','150');
+ insert into item Values('04','paneer chila','200');
+ insert into item Values('05','pav bajhi','150');
+ insert into item Values('06','manchuriyan','220');
+ insert into item Values('07','burger','120');
+ 
+ 
+ 
+ 
+ insert into offers Values('01','summer vaction','1002','1006','20','2016-06-20','2016-06-30');
+insert into offers Values('02','winter vaction', '1001','1006','20','2016-12-20','2016-12-30');
+insert into offers Values('03','diwali offer', '1003','1003','20','2016-11-20','2016-11-25');
+insert into offers Values('04','holi offer', '1005','1004','20','2016-03-20','2016-03-23');
+insert into offers Values('05','special offer', '1004','1002','20','2016-07-18','2016-06-22');
+insert into offers Values('06','bumper offer', '1002','1005','20','2016-08-20','2016-08-25');
+
+
+
+insert into city Values('382020','gandhinagar','gj');
+insert into city Values('382028','gandhinagar','gj');
+insert into city Values('335051','raisingh nagar','rj');
+insert into city Values('335001','ganganagar','rj');
+insert into city Values('228145','kadipur','up');
+insert into city Values('142001','moga','pb');
+insert into city Values('174301','haroli','hp');
+
+insert into hotel Values('1001','black panther','335051','sector-5','5 star');
+insert into hotel Values('1002','red chilli','335051','sector-2','5 star');
+insert into hotel Values('1003','mannt','228145','chowk','3 star');
+insert into hotel Values('1004','taj','142001','sector-10','5 star');
+insert into hotel Values('1005','apple green','174301','sector-11');
+insert into hotel Values('1006','alpha','382028','sector-16','5 star');
+
+
+
+insert into waiter Values('101','ramu','1001');
+insert into waiter Values('102','tittu','1002');
+insert into waiter Values('103','goru','1003');
+insert into waiter Values('104','hemu','1004');
+insert into waiter Values('105','shukh','1005');
+insert into waiter Values('106','ranjit','1006');
+
+
+insert into room Values('1001','101','single','0','1500');
+insert into room Values('1003','113','double','1','2500');
+insert into room Values('1003','112','single','0','1500');
+insert into room Values('1002','121','suite','2','4500');
+insert into room Values('1006','105','suite','0','4500');
+insert into room Values('1005','124','suite','2','4500');
+insert into room Values('1005','125','suite','2','4500');
+insert into room Values('1004','145','double','4','2500');
+
+
+
+
+
+
+insert into customer Values('1001','Mr','lucky','s','singh','malapur' ,'lucky@gmail.com' ,'9558224693','101');
+insert into customer Values('1002','Mr','chirag','','garg','ganganagar' ,'chirag@gmail.com' ,'9958254643','102');
+insert into customer Values('1003','Mrs','anita','','singh','mumbai' ,'anita@gmail.com' ,'9258124690','103');
+insert into customer Values('1004','Mr','aniket','','verma','patna' ,'aniket@gmail.com' ,'9068224658','104');
+insert into customer Values('1005','Company','tata','','','jamnagar' ,'tata@gmail.com' ,'9358214653','105');
+insert into customer Values('1006','Mr','prateek','','shah','vadodara' ,'prateek@gmail.com' ,'9658224692','106');
+insert into customer Values('1007','Mrs','shujata','','sharma','lucknow' ,'shujata@gmail.com' ,'9558224394','102');
+
+
+
+
+
+
+
+
+
+
+
+insert into bill Values('101','2016-05-21','1001','cash');
+insert into bill Values('102','2016-03-22','1002','debitCard');
+insert into bill Values('103','2016-07-15','1003','creditCard');
+insert into bill Values('104','2016-09-21','1004','cheque');
+insert into bill Values('105','2016-02-21','1005','cash');
+insert into bill Values('106','2016-12-26','1006','creditCard');
+
+
+
+
+
+
+insert into orders Values('1001','1','3','2016-05-21');
+insert into orders Values('1002','4','4','2016-03-21');
+insert into orders Values('1003','5','2','2016-07-10');
+insert into orders Values('1004','7','8','2016-09-20');
+insert into orders Values('1002','3','1','2016-03-18');
+insert into orders Values('1006','4','4','2016-12-25');
+
+
+
+
+
+
+
+
+
+insert into relatives Values('1002','vishal raman','m','friend');
+insert into relatives Values('1003','deepak','m','friend');
+insert into relatives Values('1003','yashwant','m','friend');
+insert into relatives Values('1004','neha verma','f','wife');
+insert into relatives Values('1004','anil','m','son');
+insert into relatives Values('1005','manish','m','employee');
+insert into relatives Values('1005','kartik','m','employee');
+insert into relatives Values('1005','shilpa','f','employee');
+insert into relatives Values('1006','dhirendra sinha','m','friend');
+
+
+
+insert into reservation values('124','1005','1005','2016-02-18','2016-02-21');
+insert into reservation values('125','1005','1005','2016-02-18','2016-02-21');
+insert into reservation values('121','1002','1002','2016-03-15','2016-03-22');
+insert into reservation values('101','1001','1001','2016-05-11','2016-05-21');
+insert into reservation values('113','1003','1003','2016-07-01','2016-07-15');
+insert into reservation values('112','1003','1003','2016-07-01','2016-07-15');
+insert into reservation values('145','1004','1004','2016-09-16','2016-09-21');
+insert into reservation values('105','1006','1006','2016-12-20','2016-12-26');

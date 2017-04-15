@@ -1,4 +1,4 @@
-# Resorts-Management-System
+# Resort-Management-System
 -> A database management project using DBMS techniques <br />
 -> project-Description.pdf holds all the information about the project and the assumptions we made to implement this project.<br />
 -> pro.sql file contains the struture of the database or the tables.<br />
